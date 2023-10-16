@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURVEY-FORM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .SF{
+            text-align: center;
+            border: 2px solid black;
+            width: 500px;
+            height: 500px;
+                        
+            position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+        }
+        main{
+            background-image: url(Screenshot\ 2023-10-10\ 111921.png);
+            width: 600px;
+            height: 600px;
+            position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+        }
+        main h2{
+            font-size: x-large;
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            text-align: center;
+            margin-top: 1%;
+        }
+        p{
+            color: white;
+        }
+        button{
+    background-color: brown;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#pop{
+            display: none;
+            width: 80%;
+            position: absolute;
+            top: 150px;
+            margin: auto;
+            padding: 30px;
+          border: 3px solid black;
+            background-color: rgb(221, 217, 16);
+            color: white;
+            transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+
+    </style>
+</head>
+<body>
+    <main>
+        <h2><u>SURVEY-FORM</u></h2>
+    <div class="SF">
+        <form id="surveyform">
+    <p style="margin-top: 2%;">First name: <input type="text" id="firstName"maxlength="10" size="30" placeholder="Your First name" required></p>
+    <p>Last name: <input type="text" maxlength="10" size="30" id="lastName" placeholder="Your Last name" required></p>
+    <p>DOB: <input type="date" placeholder="dd-mm-yy" id="dob" required></p>
+    <span style="color: white;">Country:</span> <select  id="country"required>
+        <option selected disabled>Choose one</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>UK</option>
+        <option>Australia</option>
+        <option>China</option>
+    </select>
+   <p></p>
+    <p>Gender: <input type="radio" name="Gender"> Male <input type="radio" name="Gender"> Female <input type="radio" name="Gender"> Other</p>
+    <p>Profession: <input type="text" placeholder="your profession" id="profession" size="30" required></p>
+    <p>Email: <input type="email" placeholder="your email" size="30" id="email" required></p>
+    <p>Phone number: <input type="tel" placeholder="contact number" id="mobile" maxlength="10" required></p>
+    <button onclick="submitForm()" >Submit</button> 
+       <button onclick="resetForm()">Reset</button>
+    </form>
+    <div id="pop">
+        <center><h1>Filled details</h1></center>
+        <div id="c"></div>
+        <center> <button onclick="resF()">Submit</button></center>
+     </div>
+    </div>
+</main>
+<script>
+    function submitForm(){
+            if(document.getElementById("surveyform").checkValidity()){
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                 const dob = document.getElementById('dob').value;
+                const country = document.getElementById('country').value;
+               const genderElements = document.querySelectorAll('input[name="Gender"]:checked');
+                const gender = Array.from(genderElements).map(input => input.value).join(', ');
+                const profession = document.getElementById('profession').value;
+                const email = document.getElementById('email').value;
+                const mobile = document.getElementById('mobile').value;
+               const popup= "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Date of Birth: " + dob + "<br>" +  "Country: " + country + "<br>" + "Gender: " + gender + "<br>" +  "Profession: " + profession + "<br>" + "Email: " + email + "<br>" + "Mobile Number: " + mobile;
+                document.getElementById("c").innerHTML=popup;
+                document.getElementById("pop").style.display="block";
+                document.getElementById("surveyform").reset();
+            }
+            else{
+                alert('Please fill out all required fields.');
+            }
+
+        }
+       
+        function resetForm() {
+            document.getElementById("surveyform").reset();
+        }
+        function resF(){
+            document.getElementById("pop").style.display="none";
+        }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        body{
+            background-color: grey;
+        }
+        .container{
+            width: 300px;
+            height: 270px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 20px ;
+        }
+         input[type="button"] {
+            width: 60px;
+            height: 40px;
+            margin: 5px;
+            font-size: 18px;
+        }
+        input[type="text"] {
+            width: 200px;
+            height: 40px;
+            margin: 5px;
+            font-size: 18px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="display" style="color: black;" disabled >
+        <input type="button" value="AC" onclick="clearDisplay()" style="background-color: rgb(19, 124, 98);color: white;">
+       
+        <br>
+        
+        <input type="button" value="7" onclick="displayValue('7')" style="background-color: black;color: white;">
+        <input type="button" value="8" onclick="displayValue('8')" style="background-color: black;color: white;">
+        <input type="button" value="9" onclick="displayValue('9')" style="background-color: black;color: white;">
+        <input type="button" value="/" onclick="displayValue('/')" style="background-color: grey;color: white;">
+        <br>
+        <input type="button" value="4" onclick="displayValue('4')" style="background-color: black;color: white;">
+        <input type="button" value="5" onclick="displayValue('5')" style="background-color: black;color: white;">
+        <input type="button" value="6" onclick="displayValue('6')" style="background-color: black;color: white;">
+        <input type="button" value="-" onclick="displayValue('-')" style="background-color: grey;color: white;">
+        <br>
+        <input type="button" value="1" onclick="displayValue('1')" style="background-color: black;color: white;">
+        <input type="button" value="2" onclick="displayValue('2')" style="background-color: black;color: white;">
+        <input type="button" value="3" onclick="displayValue('3')" style="background-color: black;color: white;">
+        <input type="button" value="+" onclick="displayValue('+')" style="background-color: grey;color: white;">
+        <br>
+        <input type="button" value="." onclick="displayValue('.')" style="background-color: black;color: white;">
+        <input type="button" value="0" onclick="displayValue('0')" style="background-color: black;color: white;">
+        <input type="button" value="=" onclick="calculate()" style="background-color: black;color: white;">
+        <input type="button" value="*" onclick="displayValue('*')" style="background-color: grey;color: white;">
+    </div>
+    <script>
+        function displayValue(value){
+            document.getElementById('display').value+=value;
+        }
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
